@@ -1,4 +1,5 @@
 import { BrandLogo } from "@/components/BrandLogo";
+import { Reveal } from "@/components/motion/Reveal";
 import { footer } from "@/content/landing";
 
 function SocialIcon({ name }) {
@@ -49,92 +50,94 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-[#050816] px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-1">
-            <BrandLogo
-              href="#home"
-              label={footer.brand}
-              idPrefix="footer"
-              markClassName="h-9 w-9 shrink-0 drop-shadow-[0_6px_20px_rgba(14,165,233,0.22)]"
-            />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-text-muted">
-              {footer.about}
-            </p>
-          </div>
-          <div>
-            <h3 className="font-display text-sm font-bold text-text">
-              {footer.services.title}
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm text-text-muted">
-              {footer.services.links.map((item) => (
-                <li key={item}>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-display text-sm font-bold text-text">
-              {footer.support.title}
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {footer.support.links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className={
-                      link.highlight
-                        ? "font-medium text-text transition hover:text-accent-blue"
-                        : "text-text-muted transition hover:text-text"
-                    }
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-display text-sm font-bold text-text">
-              {footer.connect.title}
-            </h3>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {footer.connect.social.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-text-muted transition hover:border-white/20 hover:bg-white/10 hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-                >
-                  <SocialIcon name={s.label} />
-                </a>
-              ))}
+        <Reveal variant="fade-up">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+            <div className="lg:col-span-1">
+              <BrandLogo
+                href="#home"
+                label={footer.brand}
+                idPrefix="footer"
+                markClassName="h-9 w-9 shrink-0 drop-shadow-[0_6px_20px_rgba(14,165,233,0.22)]"
+              />
+              <p className="mt-5 max-w-sm text-sm leading-relaxed text-text-muted">
+                {footer.about}
+              </p>
             </div>
-            <p className="mt-6 flex items-center gap-2 text-sm text-text-muted">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="shrink-0 text-accent-blue"
-                aria-hidden
-              >
-                <path
-                  d="M4 6a2 2 0 0 1 2-2h2.5l1 2H18a2 2 0 0 1 2 2v1.5M4 6v12a2 2 0 0 0 2 2h12"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <a
-                href={`mailto:${footer.connect.newsletterEmail}`}
-                className="hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
-              >
-                {footer.connect.newsletterEmail}
-              </a>
-            </p>
+            <div>
+              <h3 className="font-display text-sm font-bold text-text">
+                {footer.services.title}
+              </h3>
+              <ul className="mt-5 space-y-3 text-sm text-text-muted">
+                {footer.services.links.map((item) => (
+                  <li key={item}>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-display text-sm font-bold text-text">
+                {footer.support.title}
+              </h3>
+              <ul className="mt-5 space-y-3 text-sm">
+                {footer.support.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className={
+                        link.highlight
+                          ? "font-medium text-text transition hover:text-accent-blue"
+                          : "text-text-muted transition hover:text-text"
+                      }
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-display text-sm font-bold text-text">
+                {footer.connect.title}
+              </h3>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {footer.connect.social.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    className="interactive-scale inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-text-muted hover:border-white/20 hover:bg-white/10 hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+                  >
+                    <SocialIcon name={s.label} />
+                  </a>
+                ))}
+              </div>
+              <p className="mt-6 flex items-center gap-2 text-sm text-text-muted">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="shrink-0 text-accent-blue"
+                  aria-hidden
+                >
+                  <path
+                    d="M4 6a2 2 0 0 1 2-2h2.5l1 2H18a2 2 0 0 1 2 2v1.5M4 6v12a2 2 0 0 0 2 2h12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <a
+                  href={`mailto:${footer.connect.newsletterEmail}`}
+                  className="hover:text-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+                >
+                  {footer.connect.newsletterEmail}
+                </a>
+              </p>
+            </div>
           </div>
-        </div>
+        </Reveal>
         <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>{footer.copyright}</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">

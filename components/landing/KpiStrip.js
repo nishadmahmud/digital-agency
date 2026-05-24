@@ -1,3 +1,5 @@
+import { CountUp } from "@/components/motion/CountUp";
+import { Reveal } from "@/components/motion/Reveal";
 import { kpis } from "@/content/landing";
 
 function accentClass(accent) {
@@ -14,7 +16,7 @@ export function KpiStrip() {
       <h2 id="kpi-heading" className="sr-only">
         Key metrics
       </h2>
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-inner backdrop-blur-md sm:px-12">
+      <Reveal variant="fade-up" className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-12 shadow-inner backdrop-blur-md sm:px-12">
         <div
           className="pointer-events-none absolute -left-24 top-0 h-64 w-64 rounded-full bg-cyan-500/10 blur-[80px]"
           aria-hidden
@@ -26,18 +28,17 @@ export function KpiStrip() {
         <div className="relative grid gap-10 sm:grid-cols-3">
           {kpis.map((k) => (
             <div key={k.label} className="text-center sm:text-left">
-              <p
+              <CountUp
+                value={k.value}
                 className={`font-display text-4xl font-bold tracking-tight sm:text-5xl ${accentClass(k.accent)}`}
-              >
-                {k.value}
-              </p>
+              />
               <p className="mt-2 text-sm font-medium text-text-muted">
                 {k.label}
               </p>
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

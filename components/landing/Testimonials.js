@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/motion/Reveal";
 import { testimonials } from "@/content/landing";
 
 function QuoteIcon({ className }) {
@@ -48,7 +49,7 @@ export function Testimonials() {
       aria-labelledby="testimonials-heading"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal variant="fade-up" className="mx-auto max-w-3xl text-center">
           <h2
             id="testimonials-heading"
             className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
@@ -58,35 +59,34 @@ export function Testimonials() {
           <p className="mt-4 text-base leading-relaxed text-section-light-muted sm:text-lg">
             {testimonials.subtitle}
           </p>
-        </div>
+        </Reveal>
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
-          {testimonials.items.map((t) => (
-            <article
-              key={t.name}
-              className="flex flex-col rounded-3xl border border-slate-200/90 bg-white p-8 shadow-lg shadow-slate-900/10 ring-1 ring-slate-900/[0.04] transition hover:-translate-y-0.5 hover:shadow-xl"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <Stars />
-                <QuoteIcon className="shrink-0 text-sky-300" />
-              </div>
-              <p className="mt-6 flex-1 text-sm leading-relaxed text-slate-600">
-                {t.quote}
-              </p>
-              <div className="mt-8 flex items-center gap-3 border-t border-slate-100 pt-6">
-                <span
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-500 to-emerald-500 text-sm font-bold text-white shadow-md"
-                  aria-hidden
-                >
-                  {t.initials}
-                </span>
-                <div>
-                  <p className="font-display font-bold text-slate-900">
-                    {t.name}
-                  </p>
-                  <p className="text-sm text-section-light-muted">{t.role}</p>
+          {testimonials.items.map((t, i) => (
+            <Reveal key={t.name} as="article" variant="fade-up" delay={i * 60}>
+              <div className="interactive-lift flex h-full flex-col rounded-3xl border border-slate-200/90 bg-white p-8 shadow-lg shadow-slate-900/10 ring-1 ring-slate-900/[0.04] hover:shadow-xl">
+                <div className="flex items-start justify-between gap-4">
+                  <Stars />
+                  <QuoteIcon className="shrink-0 text-sky-300" />
+                </div>
+                <p className="mt-6 flex-1 text-sm leading-relaxed text-slate-600">
+                  {t.quote}
+                </p>
+                <div className="mt-8 flex items-center gap-3 border-t border-slate-100 pt-6">
+                  <span
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sky-500 to-emerald-500 text-sm font-bold text-white shadow-md"
+                    aria-hidden
+                  >
+                    {t.initials}
+                  </span>
+                  <div>
+                    <p className="font-display font-bold text-slate-900">
+                      {t.name}
+                    </p>
+                    <p className="text-sm text-section-light-muted">{t.role}</p>
+                  </div>
                 </div>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

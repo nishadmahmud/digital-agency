@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/motion/Reveal";
 import { cta } from "@/content/landing";
 
 function ArrowRightIcon({ className }) {
@@ -28,7 +29,7 @@ export function Cta() {
       className="scroll-mt-20 px-4 py-24 sm:px-6 lg:px-8"
       aria-labelledby="cta-heading"
     >
-      <div className="relative mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#0d1629] via-bg-page to-[#0a1222] px-6 py-16 text-center shadow-2xl shadow-black/50 sm:px-12">
+      <Reveal variant="scale-in" className="relative mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#0d1629] via-bg-page to-[#0a1222] px-6 py-16 text-center shadow-2xl shadow-black/50 sm:px-12">
         <div
           className="pointer-events-none absolute -left-40 top-0 h-72 w-72 rounded-full bg-cyan-500/15 blur-[90px]"
           aria-hidden
@@ -37,30 +38,32 @@ export function Cta() {
           className="pointer-events-none absolute -bottom-20 right-0 h-72 w-72 rounded-full bg-emerald-500/10 blur-[90px]"
           aria-hidden
         />
-        <h2
-          id="cta-heading"
-          className="relative font-display text-3xl font-bold tracking-tight text-text sm:text-4xl"
-        >
-          {cta.title}
-        </h2>
-        <p className="relative mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-muted">
-          {cta.subtitle}
-        </p>
-        <div className="relative mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="mailto:hello@agency.com"
-            className="group inline-flex items-center gap-2 rounded-2xl bg-accent-green px-7 py-3.5 text-base font-semibold text-white shadow-xl shadow-accent-green/25 transition hover:-translate-y-0.5 hover:shadow-accent-green/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green"
+        <Reveal variant="fade-up" delay={100}>
+          <h2
+            id="cta-heading"
+            className="relative font-display text-3xl font-bold tracking-tight text-text sm:text-4xl"
           >
-            {cta.primary}
-            <ArrowRightIcon className="transition group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="tel:+15551234567"
-            className="inline-flex items-center rounded-2xl border border-white/25 bg-white/5 px-7 py-3.5 text-base font-semibold text-text backdrop-blur-sm transition hover:border-white/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            {cta.secondary}
-          </a>
-        </div>
+            {cta.title}
+          </h2>
+          <p className="relative mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-muted">
+            {cta.subtitle}
+          </p>
+          <div className="relative mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="mailto:hello@agency.com"
+              className="group interactive-lift inline-flex items-center gap-2 rounded-2xl bg-accent-green px-7 py-3.5 text-base font-semibold text-white shadow-xl shadow-accent-green/25 hover:shadow-accent-green/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green"
+            >
+              {cta.primary}
+              <ArrowRightIcon className="transition group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href="tel:+15551234567"
+              className="interactive-lift inline-flex items-center rounded-2xl border border-white/25 bg-white/5 px-7 py-3.5 text-base font-semibold text-text backdrop-blur-sm hover:border-white/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              {cta.secondary}
+            </a>
+          </div>
+        </Reveal>
         <div className="relative mx-auto mt-14 max-w-2xl border-t border-white/10 pt-10">
           <div className="grid gap-8 sm:grid-cols-2 sm:gap-12">
             <div className="flex items-start gap-4 text-left">
@@ -124,7 +127,7 @@ export function Cta() {
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

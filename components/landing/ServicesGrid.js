@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/motion/Reveal";
 import { highlightStats, services } from "@/content/landing";
 
 function ServiceIcon({ type, variant }) {
@@ -67,49 +68,51 @@ export function ServicesGrid() {
     <div className="px-4 pb-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
-            <article
-              key={s.id}
-              className="group flex flex-col rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent p-6 shadow-lg shadow-black/20 ring-1 ring-white/5 transition hover:-translate-y-0.5 hover:border-accent-blue/30 hover:shadow-xl"
-            >
-              <ServiceIcon type={s.icon} variant={s.iconVariant} />
-              <h3 className="mt-5 font-display text-lg font-bold text-text">
-                {s.title}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
-                {s.description}
-              </p>
-              <a
-                href="#contact"
-                className="mt-6 inline-flex items-center text-sm font-semibold text-accent-blue transition group-hover:gap-1.5"
-              >
-                {s.link}{" "}
-                <span aria-hidden className="inline transition group-hover:translate-x-0.5">
-                  →
-                </span>
-              </a>
-            </article>
+          {services.map((s, i) => (
+            <Reveal key={s.id} as="article" variant="fade-up" delay={i * 60}>
+              <div className="group interactive-lift flex h-full flex-col rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent p-6 shadow-lg shadow-black/20 ring-1 ring-white/5 hover:border-accent-blue/30 hover:shadow-xl">
+                <ServiceIcon type={s.icon} variant={s.iconVariant} />
+                <h3 className="mt-5 font-display text-lg font-bold text-text">
+                  {s.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">
+                  {s.description}
+                </p>
+                <a
+                  href="#contact"
+                  className="mt-6 inline-flex items-center text-sm font-semibold text-accent-blue transition group-hover:gap-1.5"
+                >
+                  {s.link}{" "}
+                  <span aria-hidden className="inline transition group-hover:translate-x-0.5">
+                    →
+                  </span>
+                </a>
+              </div>
+            </Reveal>
           ))}
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {highlightStats.map((h) => (
-            <div
+          {highlightStats.map((h, i) => (
+            <Reveal
               key={h.subhead}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-md transition hover:border-white/15"
+              variant="fade-up"
+              delay={80 + i * 60}
             >
-              <p
-                className={`font-display text-4xl font-extrabold tracking-tight ${statAccent(h.accent)}`}
-              >
-                {h.headline}
-              </p>
-              <p className="mt-2 font-display text-lg font-semibold text-text">
-                {h.subhead}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-text-muted">
-                {h.description}
-              </p>
-            </div>
+              <div className="interactive-lift rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-md hover:border-white/15">
+                <p
+                  className={`font-display text-4xl font-extrabold tracking-tight ${statAccent(h.accent)}`}
+                >
+                  {h.headline}
+                </p>
+                <p className="mt-2 font-display text-lg font-semibold text-text">
+                  {h.subhead}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted">
+                  {h.description}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
